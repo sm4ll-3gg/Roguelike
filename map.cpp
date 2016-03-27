@@ -60,13 +60,12 @@ int Map::set_cost_by_char(char ch)
 
 void Map::print_map()
 {
-    initscr();
+
     for(int i=0;i<heigth;i++)
     {
         for(int j=0;j<width;j++)
         {
-            std::cout<<map[i][j].ch<<" ";
+            mvaddch(i,j,map[i][j].ch);
         }
-        std::cout<<std::endl;
     }
 }
