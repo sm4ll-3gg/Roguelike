@@ -1,21 +1,22 @@
 #ifndef MAP_H
 #define MAP_H
 
+#include <cell.h>
 #include <iostream>
+#include <fstream>
+#include <vector>
 
-class Map
+using namespace std;
+
+class Map : public Cell
 {
-    Map** map; // Сама карта
-    float cost; // коэффициент передвижения (Время прохода клетки = Скороть героя * cost)
-    char ch; // Символ на карте
-    int heigth; // Колв-во строк карты
-    int width; // Кол-во столбцов карты
-    std::ifstream* fin;// файл, в котором находится сама карта
+   vector< vector<Cell> > terrain; // Карта уровня
 public:
-    Map();
-    void map_init();
-    int set_cost_by_char(char); // инициализация свойств клетки в зависимости от символа
-    void print_map();
+   Map();
+   void map_init(string);
+   void print();
 };
+
+// dev kit pro GBA
 
 #endif // MAP_H

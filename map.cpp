@@ -1,71 +1,42 @@
 #include <map.h>
-#include <cassert>
 #include <ncurses.h>
 #include <fstream>
+#include <map>
 
-// Обязательно по умолчанию поле fin должно инициализироваться нулём т.к.
-// при описании массива возникает бесконечная рекурсия (при выделении памяти
-// под строку(столбец) массива вызывается конструктор и массив создаётся заного
+using namespace std;
 
 Map::Map()
-    :map(0), cost(0), ch(0), heigth(0), width(0), fin(0) {}
-
-void Map::map_init()
 {
-    fin=new std::ifstream;
-    fin->open("../Roguelike/Locations/map.txt");
+    map_init("main");
+}
 
-    assert(fin->is_open());
-
-    *fin >> heigth; // Берём из первой строки файла размерность карты
-    *fin >> width;
-
-    map = new Map * [heigth];
-    for(int i=0;i<heigth;i++)
+void Map::map_init(string location_name)
+{
+    ifstream fin("../Roguelike/Locations/"+location_name+".map");
+    int x; // размеры карты
+    int y;
+    fin >> x >> y;
+    for(int i=0;i<x;i++)
     {
-        map[i]=new Map [width];
-    }
-
-    for(int i=0;i<heigth;i++)
-    {
-        for(int j=0;j<width;j++)
+        terrain.push_back( vector<Cell>(y) );
+        for(int j=0;j<y;j++)
         {
-            *fin >> map[i][j].ch;
-            set_cost_by_char(map[i][j].ch);
+            int val;
+            fin >> val;
+            terrain[i][j].set(val);
         }
     }
-
-    delete fin;
 }
 
-int Map::set_cost_by_char(char ch)
+void Map::print()
 {
-    enum Types_of_terrain {GRASS = 34,WALL = 35, TREE = 36, WATER = 126};
-    //Types_of_terrain t; //NAME(ASCII) - Symbol | WALL(35) - #, TREE(36) - $, GRASS(34) - ", WATER(126) - ~
-
-    switch(ch)
+    for(unsigned int i=0;i<terrain.size();i++)
     {
-    case GRASS:
-        return 0.9;
-    case WALL:
-        return 0;
-    case TREE:
-        return 0.8;
-    case WATER:
-        return 0.5;
-    default:
-        return 0; // Если получен непредусмотренный символ, то пройти через него персонаж не может
-    }
-}
-
-void Map::print_map()
-{
-
-    for(int i=0;i<heigth;i++)
-    {
-        for(int j=0;j<width;j++)
+        for(unsigned int j=0;j<terrain.at(i).size();j++)
         {
-            mvaddch(i,j,map[i][j].ch);
+            Cell c;
+            cout<<c.value<<endl;
+            //mvaddch(i,j,terrain[i][j].value);
         }
     }
 }
