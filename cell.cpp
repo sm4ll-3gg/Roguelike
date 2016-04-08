@@ -7,14 +7,42 @@ Cell::Cell()
 Cell::Cell(int aValue,int aCost)
     :value(aValue), cost(aCost) {}
 
-Cell Cell::set(int aValue/*,int aCost*/)
+void Cell::set_values(int aValue/*,int aCost*/)
 {
-    return Cell(aValue,NULL);
-//    value=aValue;
-//    cost=NULL;
+    value=aValue;
 }
 
-//void Cell::get_value()
-//{
-//    return value;
-//}
+int Cell::get_value()
+{
+    return value;
+}
+
+char Cell::get_char_by_value(int value)
+{
+    switch(value)
+    {
+    case 1:
+        return '_';
+    case 2:
+        return '$';
+    case 3:
+        return '~';
+    default:
+        return 'E';
+    }
+}
+
+int Cell::get_value_by_char(char ch)
+{
+    switch(ch)
+    {
+    case '_':
+        return 1;
+    case '$':
+        return 2;
+    case '~':
+        return 3;
+    default:
+        return 0;
+    }
+}

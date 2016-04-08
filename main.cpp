@@ -8,7 +8,10 @@ int main()
     initscr(); // Initialize ncurses
     noecho(); // Don't echo keypress
     curs_set(0); // Invisible cursor
+
     Map m;
+    m.print();
+
     getch();
     endwin(); // End ncurses
 }

@@ -13,8 +13,8 @@ class Map : public Cell
    vector< vector<Cell> > terrain; // Карта уровня
 public:
    Map();
-   void map_init(string);
-   void print();
+   void map_init(string); // загрузка конкретной локации по её названию
+   void print(); // вывод карты на экран
 };
 
 // dev kit pro GBA
