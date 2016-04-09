@@ -33,13 +33,23 @@ void Map::map_init(string location_name)
     }
 }
 
-void Map::print()
+void Map::print_map()
 {
     for(unsigned int i=0;i<terrain.size();i++)
     {
         for(unsigned int j=0;j<terrain.at(i).size();j++)
         {
-            mvaddch(i,j,get_char_by_value(terrain[i][j].get_value())); // выводит символ по значению в массиве
+            print(terrain[i][j],i,j);
         }
+    }
+}
+
+void Map::print_objects(map<int,Object> object)
+{
+    unsigned int i=0;
+    while(i<object.size())
+    {
+        object.at(i).print();
+        i++;
     }
 }

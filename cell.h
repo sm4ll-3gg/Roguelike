@@ -11,8 +11,8 @@ protected:
 public:
      Cell();
      Cell(int,int);
+     void print(Cell,int,int); // выводит значение клетки на экран
      void set_values(int); // устанавливает значения свойств клетки
-     int get_value(); // возвращает значение
      char get_char_by_value(int); // возвращает символ по значению
      int get_value_by_char(char); // возвращает значение по символу
 };

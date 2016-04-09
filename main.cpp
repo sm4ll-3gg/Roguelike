@@ -1,5 +1,6 @@
 //#include <iostream>
 #include <map.h>
+#include <hero.h>
 #include <ncurses.h>
 
 int main()
@@ -10,8 +11,15 @@ int main()
     curs_set(0); // Invisible cursor
 
     Map m;
-    m.print();
+    //m.print_map();
 
-    getch();
+    Hero h;
+
+    while(true)
+    {
+        char key=getch();
+        h.get_dir_by_smth(key);
+    }
+
     endwin(); // End ncurses
 }

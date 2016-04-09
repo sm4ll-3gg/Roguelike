@@ -1,5 +1,6 @@
 #include <cell.h>
-#include <iostream>
+//#include <iostream>
+#include <ncurses.h>
 
 Cell::Cell()
     :value(0), cost(0) {}
@@ -12,9 +13,9 @@ void Cell::set_values(int aValue/*,int aCost*/)
     value=aValue;
 }
 
-int Cell::get_value()
+void Cell::print(Cell c,int x,int y)
 {
-    return value;
+    mvaddch(x,y,get_char_by_value(c.value));
 }
 
 char Cell::get_char_by_value(int value)
@@ -46,3 +47,4 @@ int Cell::get_value_by_char(char ch)
         return 0;
     }
 }
+

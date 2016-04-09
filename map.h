@@ -2,7 +2,7 @@
 #define MAP_H
 
 #include <cell.h>
-#include <iostream>
+#include <object.h>
 #include <fstream>
 #include <vector>
 
@@ -14,7 +14,8 @@ class Map : public Cell
 public:
    Map();
    void map_init(string); // загрузка конкретной локации по её названию
-   void print(); // вывод карты на экран
+   void print_map(); // вывод карты на экран
+   void print_objects(map<int,Object>); // вывод объектов на экран
 };
 
 // dev kit pro GBA
