@@ -1,5 +1,4 @@
 #include "map.h"
-#include <ncurses.h>
 #include <fstream>
 #include <cassert>
 
@@ -136,8 +135,9 @@ Map::~Map()
     objects.erase(objects.cbegin(),objects.cend());
 }
 
-void Map::objects_steps(Map map)
+void Map::objects_steps(Map& map)
 {
+    remove_objects();
     for(unsigned int i=0;i<objects.size();i++)
     {
         objects.at(i)->step(map);
@@ -151,6 +151,17 @@ Object* Map::find_object(int x, int y)
         if(objects.at(i)->get_x() == x && objects.at(i)->get_y() == y)
         {
             return objects.at(i);
+        }
+    }
+}
+
+void Map::remove_objects()
+{
+    for(unsigned int i=0;i<objects.size();i++)
+    {
+        if(objects.at(i)->get_hp() <= 0)
+        {
+            objects.erase(objects.begin()+i);
         }
     }
 }

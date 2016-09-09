@@ -2,7 +2,6 @@
 #define MOVABLE_H
 
 #include "object.h"
-//#include "enemy.h"
 #include "map.h"
 
 class Movable : public Object
@@ -15,8 +14,9 @@ public:
     Movable(Type);
     Movable(Type,int,int);
     std::pair<int,int> get_cords_by_dir(Direction);
-    void move(Map, std::pair<int,int>);
-    void fight(Object*);
+    void move(Map&, std::pair<int,int>);
+    virtual void fight(Object*);
+    virtual void check(Map&, std::pair<int,int>);
     virtual Direction get_dir_by_smth()=0; // Возвращает направление по коду нажатой клавиши, рандомному значению
 };
 

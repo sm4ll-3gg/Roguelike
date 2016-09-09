@@ -7,7 +7,7 @@ Cell::Cell()
 Cell::Cell(Type aType,int aCost)
     :type(aType), cost(aCost) {}
 
-char Cell::get_icon()
+chtype Cell::get_icon()
 {
     return icon.at(type);
 }

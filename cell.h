@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <map>
+#include <ncurses.h>
 
 class Cell
 {
@@ -10,10 +11,10 @@ public:
     enum Type {EMPTY = 0, GRASS = 1, FOREST = 2, WATER = 3};
 private:
      Type type;
-     const std::map<Type,char> icon = {{EMPTY, ' '},
-                                       {GRASS, '_'},
-                                       {FOREST, '$'},
-                                       {WATER, '~'}};
+     const std::map<Type,chtype> icon = {{EMPTY, ' ' | COLOR_PAIR(0) },
+                                       {GRASS, '_' | COLOR_PAIR(1) },
+                                       {FOREST, '$' | COLOR_PAIR(1) },
+                                       {WATER, '~' | COLOR_PAIR(2) }};
      const std::map<char,Type> itype = {{' ', EMPTY},
                                         {'_', GRASS},
                                         {'$', FOREST},
@@ -23,7 +24,7 @@ public:
 
      Cell();
      Cell(Type,int);
-     char get_icon();
+     chtype get_icon();
      void set_type(char);
      Type get_type();
 };

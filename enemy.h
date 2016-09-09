@@ -15,8 +15,10 @@ public:
     Enemy();
     void create(std::string);
     void print();
-    void step(Map);
+    void step(Map&);
+    void check(Map, std::pair<int, int>);
     void get_damage(int);
+    int get_hp();
     Direction get_dir_by_smth();
 };
 

@@ -13,7 +13,9 @@ public:
     Hero(int,int,int,int);
     Direction get_dir_by_smth();
     void fight(Object*);
-    void step(Map);
+    void check(Map&, std::pair<int, int>);
+    void step(Map&);
+    int get_hp();
     virtual ~Hero(); // ?
 };
 

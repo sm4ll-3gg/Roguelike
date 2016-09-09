@@ -28,12 +28,30 @@ Movable::Direction Hero::get_dir_by_smth()
     }
 }
 
-void Hero::step(Map map)
+void Hero::step(Map& map)
 {
     move(map,get_cords_by_dir(get_dir_by_smth()));
 }
 
 
+void Hero::check(Map& map,pair<int,int> cords)
+{
+    Object* object = map.find_object(cords.first,cords.second);
+    if(object->get_type() == ENEMY)
+    {
+        fight(object);
+    }
+}
+
+void Hero::fight(Object * enemy)
+{
+    dynamic_cast<Enemy*> (enemy)->get_damage(damage);
+}
+
+int Hero::get_hp()
+{
+    return hp;
+}
 
 Hero::~Hero()
 {

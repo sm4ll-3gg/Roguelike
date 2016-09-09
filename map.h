@@ -11,6 +11,7 @@ class Map /*: public Cell*/
 {
 private:
     bool is_correct_cords(int,int); // проверка корректности координат, переданных в функцию
+    void remove_objects();
 protected:
     std::vector< std::vector<Cell> > terrain; // Карта уровня
     std::vector<Object*> objects; // Все сушества, существующие на карте уровня
@@ -23,7 +24,7 @@ public:
     bool is_free(int,int); // проверяет свободна ли клетка
     void add_object(Object*);
     bool is_softly(int,int); // проверяет проходима ли клетка
-    void objects_steps(Map); // Ход всех объектов на карте
+    void objects_steps(Map&); // Ход всех объектов на карте
     Object* find_object(int,int);
     ~Map();
 };

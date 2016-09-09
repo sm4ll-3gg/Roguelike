@@ -24,7 +24,7 @@ void Enemy::create(string aName)
 
     char ch;
     fin >> ch;
-    icon = ch;
+    icon = ch | COLOR_PAIR(4);
 
     fin >> hp;
     fin >> damage;
@@ -53,20 +53,26 @@ Movable::Direction Enemy::get_dir_by_smth()
     }
 }
 
-void Enemy::step(Map map)
+void Enemy::step(Map& map)
 {
     move(map,get_cords_by_dir(get_dir_by_smth()));
 }
 
+void Enemy::check(Map map,pair<int,int> cords)
+{
+    Object* object = map.find_object(cords.first,cords.second);
+    if(object->get_type() == HERO)
+    {
+        fight(object);
+    }
+}
+
 void Enemy::get_damage(int damage)
 {
-    if(hp-damage <= 0)
-    {
-
-    }
-    else
-    {
         hp-=damage;
-        mvaddch(0,0,'!');
-    }
+}
+
+int Enemy::get_hp()
+{
+    return hp;
 }

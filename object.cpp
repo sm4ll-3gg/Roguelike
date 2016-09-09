@@ -28,7 +28,7 @@ void Object::print()
     mvaddch(x,y,symbol.at(otype));
 }
 
-void Object::step(Map map)
+void Object::step(Map& map)
 {
 
 }

@@ -29,22 +29,31 @@ pair<int,int> Movable::get_cords_by_dir(Direction dir)
     }
 }
 
-void Movable::move(Map map,pair<int,int> cords)
+void Movable::move(Map& map,pair<int,int> cords)
 {
-    if(map.is_free(cords.first,cords.second))
+    if(map.is_softly(cords.first,cords.second))
     {
-        if(map.is_softly(cords.first,cords.second))
+        if(map.is_free(cords.first,cords.second))
         {
             x=cords.first;
             y=cords.second;
         }
-    }
-    else
-    {
-        Object* object = map.find_object(x,y);
-        if(object->get_type() == ENEMY)
+        else
         {
-            //fight(object);
+            check(map,cords);
         }
-    }
+    }  
+}
+
+void Movable::check(Map& map,pair<int,int> cords)
+{
+//    Object* object = map.find_object(cords.first,cords.second);
+//    if(object->get_type() == ENEMY)
+//    {
+//        //fight(object);
+//    }
+}
+
+void Movable::fight(Object * enemy)
+{
 }
