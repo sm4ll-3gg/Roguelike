@@ -44,3 +44,20 @@ void Movable::move(Map& map,pair<int,int> cords)
         }
     }  
 }
+<<<<<<< HEAD
+=======
+
+void Movable::check(Map& map,pair<int,int> cords)
+{
+//    Object* object = map.find_object(cords.first,cords.second);
+//    if(object->get_type() == ENEMY)
+//    {
+//        //fight(object);
+//    }
+}
+
+void Movable::fight(Object * enemy)
+{
+}
+
+>>>>>>> 0fb496da5ceef422290a617aa4eeb110b57e07c7

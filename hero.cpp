@@ -48,11 +48,14 @@ void Hero::fight(Object * enemy)
     dynamic_cast<Enemy*> (enemy)->get_damage(damage);
 }
 
+<<<<<<< HEAD
 void Hero::get_damage(int damage)
 {
     hp-=damage;
 }
 
+=======
+>>>>>>> 0fb496da5ceef422290a617aa4eeb110b57e07c7
 int Hero::get_hp()
 {
     return hp;
@@ -60,7 +63,11 @@ int Hero::get_hp()
 
 Hero::~Hero()
 {
+<<<<<<< HEAD
   clear();
   printw("Вы умерли. Игра закончена! ;(");
   exit(EXIT_SUCCESS);
+=======
+//удалить его из objects
+>>>>>>> 0fb496da5ceef422290a617aa4eeb110b57e07c7
 }

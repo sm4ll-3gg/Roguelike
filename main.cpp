@@ -52,5 +52,9 @@ int main()
     getch();
     endwin(); // End ncurses
 
+<<<<<<< HEAD
     return EXIT_SUCCESS;
+=======
+    return 0;
+>>>>>>> 0fb496da5ceef422290a617aa4eeb110b57e07c7
 }
