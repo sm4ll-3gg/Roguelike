@@ -57,3 +57,4 @@ void Movable::check(Map& map,pair<int,int> cords)
 void Movable::fight(Object * enemy)
 {
 }
+

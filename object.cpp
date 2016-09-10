@@ -32,3 +32,4 @@ void Object::step(Map& map)
 {
 
 }
+

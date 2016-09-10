@@ -48,16 +48,6 @@ void Map::print_map()
     }
 }
 
-void Map::print_objects()
-{
-    unsigned int i=0;
-    while(i<objects.size())
-    {
-        objects.at(i)->print();
-        i++;
-    }
-}
-
 bool Map::is_free(int x, int y)
 {
     if(is_correct_cords(x,y))
@@ -109,16 +99,6 @@ bool Map::is_softly(int x, int y)
     {
         return FALSE;
     }
-    // Если выходишь за границы отрисовки - краш
-    // Лес считается непроходимым объектом
-    //    if(terrain[x][y].get_type() == (FOREST || WATER) )
-    //    {
-    //        return true;
-    //    }
-    //    else
-    //    {
-    //        return false;
-    //    }
 }
 
 bool Map::is_correct_cords(int x, int y)
@@ -164,4 +144,29 @@ void Map::remove_objects()
             objects.erase(objects.begin()+i);
         }
     }
+}
+
+void Map::print_objects()
+{
+    unsigned int i=0;
+    while(i<objects.size())
+    {
+        objects.at(i)->print();
+        i++;
+    }
+}
+
+int Map::get_height()
+{
+    return terrain.size();
+}
+
+int Map::get_weidth(int i)
+{
+    return terrain.at(i).size();
+}
+
+Object* Map::get_object(int i)
+{
+    return objects.at(i);
 }

@@ -15,7 +15,7 @@ protected:
     int x; // координаты объекта
     int y;
     const std::map<Type,chtype> symbol = {{NONE, ' '},
-                                        {HERO, '@' | COLOR_PAIR(3)}};
+                                          {HERO, '@' | COLOR_PAIR(3)}};
 public:
     Object();
     Object(Type,int,int); // Тип объекта и его координаты

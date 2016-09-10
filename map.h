@@ -4,10 +4,13 @@
 #include "cell.h"
 #include "object.h"
 #include <vector>
+#include "object.h"
+#include <map>
+
 
 class Object;
 
-class Map /*: public Cell*/
+class Map
 {
 private:
     bool is_correct_cords(int,int); // проверка корректности координат, переданных в функцию
@@ -25,11 +28,12 @@ public:
     void add_object(Object*);
     bool is_softly(int,int); // проверяет проходима ли клетка
     void objects_steps(Map&); // Ход всех объектов на карте
+    Object* get_object(int);
     Object* find_object(int,int);
+    int get_height();
+    int get_weidth(int);
     ~Map();
 };
-
-// dev kit pro GBA
 
 #endif // MAP_H
 
