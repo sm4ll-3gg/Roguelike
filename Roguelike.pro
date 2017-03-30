@@ -11,12 +11,9 @@ SOURCES += main.cpp \
     object.cpp \
     map.cpp \
     movable.cpp \
-<<<<<<< HEAD
     enemy.cpp \
     search_way.cpp
-=======
     enemy.cpp
->>>>>>> 0fb496da5ceef422290a617aa4eeb110b57e07c7
 
 HEADERS += \
     cell.h \

@@ -15,14 +15,10 @@ public:
     Movable(Type,int,int);
     std::pair<int,int> get_cords_by_dir(Direction);
     void move(Map&, std::pair<int,int>);
-<<<<<<< HEAD
+
     virtual void fight(Object*) = 0;
     virtual void check(Map&, std::pair<int,int>) = 0;
     virtual void get_damage(int) = 0;
-=======
-    virtual void fight(Object*);
-    virtual void check(Map&, std::pair<int,int>);
->>>>>>> 0fb496da5ceef422290a617aa4eeb110b57e07c7
     virtual Direction get_dir_by_smth()=0; // Возвращает направление по коду нажатой клавиши, рандомному значению
 };
 
